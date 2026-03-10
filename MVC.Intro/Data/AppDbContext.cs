@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MVC.Intro.Models;
 
 namespace MVC.Intro.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public string DbPath { get; }
 
@@ -12,7 +13,7 @@ namespace MVC.Intro.Data
             var projectRoot = Directory.GetCurrentDirectory();
             var dataFolder = Path.Combine(projectRoot, "Data");
             Directory.CreateDirectory(dataFolder);
-            DbPath = Path.Combine(dataFolder, "products.db");
+            DbPath = Path.Combine(dataFolder, "app.db");
         }
 
         public DbSet<Product> Products { get; set; } = null!;

@@ -5,7 +5,6 @@ namespace MVC.Intro.Services
 {
     public class ProductService
     {
-        private const string ProductPrefix = "PRD_";
         private readonly ILogger<ProductService> _logger;
         private readonly AppDbContext _context;
 
@@ -44,10 +43,6 @@ namespace MVC.Intro.Services
                 throw new ArgumentNullException("Product is null");
             }
             toAdd.Id = Guid.NewGuid();
-            if (!toAdd.Name.StartsWith(ProductPrefix))
-            {
-                DecorateProductName(toAdd);
-            }
             _context.Products.Add(toAdd);
             _context.SaveChanges();
             return toAdd;
@@ -63,9 +58,21 @@ namespace MVC.Intro.Services
             _context.SaveChanges();
         }
 
-        private void DecorateProductName(Product product)
+        public Product UpdateProduct(Product product)
         {
-            product.Name = ProductPrefix + product.Name;
+            var existing = _context.Products.FirstOrDefault(p => p.Id == product.Id);
+            if (existing == null)
+            {
+                throw new ArgumentNullException("Product not found");
+            }
+
+            existing.Name = product.Name;
+            existing.Price = product.Price;
+            existing.Color = product.Color;
+            existing.Size = product.Size;
+
+            _context.SaveChanges();
+            return existing;
         }
 
     }
