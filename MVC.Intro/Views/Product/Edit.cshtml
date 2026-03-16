@@ -44,11 +44,21 @@
                 <label asp-for="Size" class="control-label"></label>
                 <select asp-for="Size" class="form-control">
                     <option value="">-- изберете --</option>
-                    @for (var i = 76; i <= 96; i++)
-                    {
-                        var size = (i / 2m).ToString(System.Globalization.CultureInfo.InvariantCulture);
-                        <option value="@size">@size</option>
-                    }
+                    <optgroup label="Дрехи">
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </optgroup>
+                    <optgroup label="Обувки">
+                        @for (var i = 76; i <= 96; i++)
+                        {
+                            var size = (i / 2m).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                            <option value="@size">@size</option>
+                        }
+                    </optgroup>
                 </select>
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
