@@ -29,7 +29,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="Size" class="control-label"></label>
-                <input asp-for="Size" class="form-control" />
+                <select asp-for="Size" class="form-control">
+                    <option value="">-- изберете --</option>
+                    @for (var i = 76; i <= 96; i++)
+                    {
+                        var size = (i / 2m).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        <option value="@size">@size</option>
+                    }
+                </select>
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
             <div class="form-group">

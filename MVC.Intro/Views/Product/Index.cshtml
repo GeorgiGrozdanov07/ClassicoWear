@@ -54,11 +54,11 @@
             <div class="mb-1">
                 <div class="fw-semibold mb-2">Размер</div>
                 <div class="d-flex flex-wrap gap-2">
-                    <span class="badge rounded-pill bg-light text-dark border">S</span>
-                    <span class="badge rounded-pill bg-light text-dark border">M</span>
-                    <span class="badge rounded-pill bg-light text-dark border">L</span>
-                    <span class="badge rounded-pill bg-light text-dark border">XL</span>
-                    <span class="badge rounded-pill bg-light text-dark border">52-54</span>
+                    @for (var i = 76; i <= 96; i++)
+                    {
+                        var size = (i / 2m).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        <span class="badge rounded-pill bg-light text-dark border">@size</span>
+                    }
                 </div>
             </div>
         </div>

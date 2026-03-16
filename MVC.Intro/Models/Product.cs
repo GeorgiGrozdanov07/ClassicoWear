@@ -29,7 +29,7 @@ namespace MVC.Intro.Models
         [DisplayName("Размер")]
         [Required(ErrorMessage = "Задължително е да изберете размер")]
         [StringLength(10, ErrorMessage = "Дължината на размера трябва да е максимум 10 символа")]
-        [RegularExpression(@"^[A-Za-z0-9\-]+$", ErrorMessage = "Размерът може да съдържа букви, цифри и тирета (например M, L, XL, 52-54)")]
+        [RegularExpression(@"^((3[8-9]|4[0-7])(\.5)?|48)$", ErrorMessage = "Размерът трябва да е между 38 и 48 през 0.5")]
         public required string Size { get; set; }
     }
 }
