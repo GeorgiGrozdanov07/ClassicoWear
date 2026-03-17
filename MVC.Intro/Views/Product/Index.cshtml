@@ -11,8 +11,8 @@
 
 <div class="shop-header d-flex flex-wrap gap-3 align-items-center justify-content-between mb-3">
     <div>
-        <h1 class="mb-1">Костюми</h1>
-        <div class="text-muted products-subtitle">Избери цвят и размер. Натисни “Details” за повече.</div>
+        <h1 class="mb-1">Suits</h1>
+        <div class="text-muted products-subtitle">Choose a color and size. Click “Details” for more.</div>
     </div>
     <div class="d-flex flex-wrap gap-2 align-items-center">
         <div class="input-group shop-search">
@@ -27,23 +27,23 @@
     <aside class="col-12 col-lg-3">
         <div class="shop-sidebar">
             <div class="d-flex align-items-center justify-content-between mb-2">
-                <h5 class="mb-0">Филтри</h5>
+                <h5 class="mb-0">Filters</h5>
                 <button class="btn btn-sm btn-outline-secondary" type="button" disabled>Reset</button>
             </div>
 
             <div class="mb-3">
-                <div class="fw-semibold mb-2">Категории</div>
+                <div class="fw-semibold mb-2">Categories</div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-outline-dark text-start" type="button" disabled>Костюми</button>
-                    <button class="btn btn-outline-dark text-start" type="button" disabled>Ризи</button>
-                    <button class="btn btn-outline-dark text-start" type="button" disabled>Обувки</button>
-                    <button class="btn btn-outline-dark text-start" type="button" disabled>Аксесоари</button>
+                    <button class="btn btn-outline-dark text-start" type="button" disabled>Suits</button>
+                    <button class="btn btn-outline-dark text-start" type="button" disabled>Shirts</button>
+                    <button class="btn btn-outline-dark text-start" type="button" disabled>Shoes</button>
+                    <button class="btn btn-outline-dark text-start" type="button" disabled>Accessories</button>
                 </div>
-                <div class="small text-muted mt-2">Филтрите са UI (без логика), за да изглежда като магазин.</div>
+                <div class="small text-muted mt-2">Filters are UI-only (no logic), just to look like a shop.</div>
             </div>
 
             <div class="mb-3">
-                <div class="fw-semibold mb-2">Цвят</div>
+                <div class="fw-semibold mb-2">Color</div>
                 <div class="d-flex flex-wrap gap-2">
                     <span class="badge rounded-pill bg-dark">Black</span>
                     <span class="badge rounded-pill bg-secondary">Gray</span>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="mb-1">
-                <div class="fw-semibold mb-2">Размер</div>
+                <div class="fw-semibold mb-2">Size</div>
                 <div class="d-flex flex-wrap gap-2">
                     <span class="badge rounded-pill bg-light text-dark border">XS</span>
                     <span class="badge rounded-pill bg-light text-dark border">S</span>
@@ -87,7 +87,7 @@
                             }
                         </div>
                         <div class="product-img-placeholder">
-                            <img class="product-img" src="~/images/products/@(item.Id).jpg" alt="@CleanName(item.Name)" onerror="this.style.display='none'" />
+                            <img class="product-img" src="~/images/products/@(item.Id).jpg" alt="@CleanName(item.Name)" onerror="this.onerror=null;this.src='/images/6.jpg';this.classList.add('product-img-fallback');" />
                             <div class="product-img-sheen"></div>
                         </div>
                     </div>
@@ -103,6 +103,7 @@
 
                     <div class="product-actions">
                         <a class="btn btn-sm btn-dark" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-sm btn-outline-dark" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id" asp-route-returnUrl="@returnUrl">Add to cart</a>
                         <a class="btn btn-sm btn-outline-secondary" asp-controller="Product" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                         <form asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" method="post" class="d-inline">
                             <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
